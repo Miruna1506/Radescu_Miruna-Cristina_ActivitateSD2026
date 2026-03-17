@@ -1,0 +1,4 @@
+1,30,4500.5,Popescu,Andrei,IT
+2,25,3800.0,Ionescu,Maria,HR
+3,40,5200.0,Georgescu,Alex,Financiar
+4,28,4100.0,Dumitrescu,Elena,Marketing

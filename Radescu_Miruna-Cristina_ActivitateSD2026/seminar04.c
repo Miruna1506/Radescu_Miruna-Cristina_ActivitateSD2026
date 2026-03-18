@@ -83,14 +83,15 @@ void adaugaMasinaInLista(Nod** cap, Masina masinaNoua) {
 	}
 }
 
-void adaugaLaInceputInLista(/*lista de masini*/ Masina masinaNoua) {
-	//adauga la inceputul listei o noua masina pe care o primim ca parametru
+void adaugaLaInceputInLista(Nod** cap, Masina masinaNoua) {
+	Nod* nodNou = (Nod*)malloc(sizeof(Nod));
+	nodNou->info = masinaNoua;
+	nodNou->next = *cap;
+	*cap = nodNou;
 }
 
 void* citireListaMasiniDinFisier(const char* numeFisier) {
-	//functia primeste numele fisierului, il deschide si citeste toate masinile din fisier
-	//prin apelul repetat al functiei citireMasinaDinFisier()
-	//ATENTIE - la final inchidem fisierul/stream-ul
+	
 	FILE* file = fopen(numeFisier, "r");
 	Nod* cap = NULL;
 
@@ -104,7 +105,6 @@ void* citireListaMasiniDinFisier(const char* numeFisier) {
 }
 
 void dezalocareListaMasini(Nod** cap) {
-	//sunt dezalocate toate masinile si lista de elemente
 	while ((*cap))
 	{
 		free((*cap)->info.numeSofer);
@@ -147,11 +147,11 @@ void stergeMasiniDinSeria(Nod** cap, char serieCautata) {
 		while (p->next && p->next->info.serie != serieCautata)
 		{
 			p = p->next;
-		}//trecem prin B-uri iar p ramane e=pe ultimul B
+		}
 		if (p->next)
 		{
 			Nod* temp = p->next;
-			p->next = temp->next;//refacem legatura
+			p->next = temp->next;
 			if (temp->info.numeSofer != NULL)
 			{
 				free(temp->info.numeSofer);

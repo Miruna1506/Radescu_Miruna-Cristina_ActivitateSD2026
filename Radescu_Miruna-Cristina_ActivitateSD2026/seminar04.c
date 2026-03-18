@@ -116,26 +116,81 @@ void dezalocareListaMasini(Nod** cap) {
 	}
 }
 
-float calculeazaPretMediu(/*lista de masini*/) {
-	//calculeaza pretul mediu al masinilor din lista.
+float calculeazaPretMediu(Nod* cap) {
+	float suma = 0;
+	int contor = 0;
+	while (cap != NULL)
+	{
+		suma = suma + cap->info.pret;
+		contor++;
+		cap = cap->next;
+	}
+	if (contor != 0)
+		return suma / contor;
 	return 0;
 }
 
-void stergeMasiniDinSeria(/*lista masini*/ char serieCautata) {
-	//sterge toate masinile din lista care au seria primita ca parametru.
-	//tratati situatia ca masina se afla si pe prima pozitie, si pe ultima pozitie
+void stergeMasiniDinSeria(Nod** cap, char serieCautata) {
+	while (*cap && (*cap)->info.serie == serieCautata)
+	{
+		Nod* temp = *cap;
+		(*cap) = temp->next;
+		if (temp->info.numeSofer != NULL)
+			free(temp->info.numeSofer);
+		if (temp->info.model != NULL)
+			free(temp->info.model);
+		free(temp);
+	}
+	Nod* p = *cap;
+	while (p != NULL)
+	{
+		while (p->next && p->next->info.serie != serieCautata)
+		{
+			p = p->next;
+		}//trecem prin B-uri iar p ramane e=pe ultimul B
+		if (p->next)
+		{
+			Nod* temp = p->next;
+			p->next = temp->next;//refacem legatura
+			if (temp->info.numeSofer != NULL)
+			{
+				free(temp->info.numeSofer);
+			}
+			if (temp->info.model != NULL)
+			{
+				free(temp->info.model);
+			}
+			free(temp);
+		}
+		else
+		{
+			p = p->next; //primeste null
+		}
+	}
 }
 
-float calculeazaPretulMasinilorUnuiSofer(/*lista masini*/ const char* numeSofer) {
-	//calculeaza pretul tuturor masinilor unui sofer.
-	return 0;
+float calculeazaPretulMasinilorUnuiSofer(Nod* cap, const char* numeSofer) {
+	float suma = 0;
+	while (cap != NULL)
+	{
+		if (strcmp(cap->info.numeSofer, numeSofer) == 0)
+		{
+			suma += cap->info.pret;
+		}
+		cap = cap->next;
+	}
+	return suma;
 }
 
 int main() {
-	//definim o lista
 	Nod* lista = citireListaMasiniDinFisier("masini.txt");
 	afisareListaMasini(lista);
-	dezalocareListaMasini(&lista);
+	float medie = calculeazaPretMediu(lista);
+	printf("\nPretul mediu este: %.2f\n", medie);
+	printf("\nPretul masinilor unui sofer este:%.2f\n", calculeazaPretulMasinilorUnuiSofer(lista, "Gigel"));
+	stergeMasiniDinSeria(&lista, 'A');
+	printf("\nDupa stergerea seria A:\n");
 	afisareListaMasini(lista);
+	dezalocareListaMasini(&lista);
 	return 0;
 }

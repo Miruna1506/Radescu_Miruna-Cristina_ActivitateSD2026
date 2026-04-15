@@ -1,0 +1,10 @@
+1,320,45.5,Ion,Rebreanu,A
+2,280,39.9,Enigma Otiliei,Calinescu,B
+3,500,55.0,Morometii,Preda,C
+4,150,25.0,Baltagul,Sadoveanu,D
+5,400,60.0,Amintiri Din Copilarie,Creanga,E
+6,220,30.5,Ultima Noapte,Petrescu,F
+7,350,48.0,Padurea Spanzuratilor,Rebreanu,G
+8,270,35.0,Fratii Jderi,Sadoveanu,H
+9,310,42.0,Cel Mai Iubit Dintre Pamanteni,Preda,I
+10,200,28.0,Moara Cu Noroc,Slavici,J

@@ -5,6 +5,6 @@
 5,400,60.0,Amintiri Din Copilarie,Creanga,E
 6,220,30.5,Ultima Noapte,Petrescu,F
 7,350,48.0,Padurea Spanzuratilor,Rebreanu,G
-8,270,35.0,Fratii Jderi,Sadoveanu,H
+8,270,35.0,Fratii Jderi,Sadoveanu,A
 9,310,42.0,Cel Mai Iubit Dintre Pamanteni,Preda,I
 10,200,28.0,Moara Cu Noroc,Slavici,J

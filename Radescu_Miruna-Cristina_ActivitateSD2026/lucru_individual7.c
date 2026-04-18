@@ -88,7 +88,7 @@ NodSimplu* citireStivaCartiDinFisier(const char* numeFisier) // pun in stiva car
 	}
 	return stiva;
 }
-void dezalocareStivaDeMasini(NodSimplu **stiva) {
+/*void dezalocareStivaDeMasini(NodSimplu** stiva) {
 	
 		while (*stiva)
 		{
@@ -105,8 +105,24 @@ void dezalocareStivaDeMasini(NodSimplu **stiva) {
 			free(aux);
 	}
 	
+}*/
+void dezalocareStivaDeMasini(NodSimplu** stiva)
+{
+	while ((*stiva))
+	{
+		Carte c = popStack(stiva);
+		if (c.titlu)
+		{
+			free(c.titlu);
+			c.titlu = NULL;
+		}
+		if (c.autor)
+		{
+			free(c.autor);
+			c.autor = NULL;
+		}
+	}
 }
-
 int size(NodSimplu * stiva) {
 	int counter = 0;
 	while (stiva)
@@ -124,11 +140,29 @@ void afisareStivaDeCarti(NodSimplu* stiva)
 		stiva = stiva->next;
 	}
 }
+float CalculeazaPretTotal(NodSimplu** stiva) //pointer-ul este transmis prin adresa, nu prin valoare (pt. a modifica stiva)
+{
+	//cu push si pop
+	NodSimplu* aux = NULL;
+	float suma = 0.0;
+	while (!emptyStack(*stiva))
+	{
+		Carte c = popStack(stiva);
+		suma += c.pret;
+		pushStack(&aux, c);
+	}
+	while (!emptyStack(aux))
+	{
+		pushStack(stiva, popStack(&aux));
+	} 
+	return suma;
+}
 int main()
 {
 	NodSimplu* stiva = (NodSimplu*)malloc(sizeof(NodSimplu));
 	stiva = citireStivaCartiDinFisier("carti.txt");
 	afisareStivaDeCarti(stiva);
+	printf("\nSuma tuturor preturilor cartilor este: %.2f\n", CalculeazaPretTotal(&stiva));
 	printf("\nNumarul elementelor din stiva este: %d\n", size(stiva));
 	Carte c = popStack(&stiva);
 	printf("\nCartea extrasa este:\n");
@@ -137,5 +171,6 @@ int main()
 	printf("\nCartea extrasa este:\n");
 	afisareCarte(c);
 	printf("\nNumarul elementelor din stiva este: %d\n", size(stiva));
+	dezalocareStivaDeMasini(&stiva);
 	return 0;
 }

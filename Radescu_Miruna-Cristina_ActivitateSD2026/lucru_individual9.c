@@ -32,7 +32,7 @@ Carte citireCarteDinFisier(FILE* file)
 	carte.codRaft = strtok(NULL, sep)[0];
 	return carte;
 }
-Carte afisareCarte(Carte carte)
+void afisareCarte(Carte carte)
 {
 	printf("\nID: %d", carte.id);
 	printf("\nNumar pagini: %d", carte.nrPagini);
@@ -40,7 +40,6 @@ Carte afisareCarte(Carte carte)
 	printf("\nTitlu: %s", carte.titlu);
 	printf("\nAutor: %s", carte.autor);
 	printf("\nCod raft: %c\n", carte.codRaft);
-	return carte;
 }
 struct Nod
 {

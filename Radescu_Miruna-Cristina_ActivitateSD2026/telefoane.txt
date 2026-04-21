@@ -1,0 +1,10 @@
+1,128,3500.5,Samsung,Galaxy S23,A
+2,256,5200.0,Apple,iPhone 14,I
+3,128,2800.0,Xiaomi,Redmi Note 12,A
+4,256,4100.0,OnePlus,11,A
+5,64,2000.0,Nokia,G21,A
+6,128,3300.0,Google,Pixel 7,A
+7,512,7500.0,Apple,iPhone 15 Pro,I
+8,256,2900.0,Oppo,Find X5,A
+9,128,3100.0,Realme,GT Neo 3,A
+10,256,3600.0,Samsung,Galaxy S22,A

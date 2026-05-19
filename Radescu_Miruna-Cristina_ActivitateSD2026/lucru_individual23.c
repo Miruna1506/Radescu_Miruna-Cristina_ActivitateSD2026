@@ -57,7 +57,7 @@ int calculeazaInaltimeArbore(Nod* radacina)
 		int inaltimeDr = calculeazaInaltimeArbore(radacina->dreapta);
 		int inaltimeSt = calculeazaInaltimeArbore(radacina->stanga);
 
-		return 1 + fmax(inaltimeDr, inaltimeSt);
+		return 1 + max(inaltimeDr, inaltimeSt);
 	}
 	return 0;
 }
@@ -132,7 +132,7 @@ void adaugareInArbore(Nod** radacina, Carte c)
 	{
 		if (esteEchilibrat((*radacina)->stanga) == -1)//copilul din stanga e mai greu pe dreapta
 		{
-			rotireDreapta(&(*radacina)->dreapta);
+			rotireStanga(&(*radacina)->stanga);
 		}
 		rotireDreapta(radacina);
 	}

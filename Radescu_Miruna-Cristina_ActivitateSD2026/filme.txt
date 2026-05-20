@@ -1,0 +1,10 @@
+1,142,35.5,Inception,Nolan,A
+2,175,40.0,The Godfather,Coppola,B
+3,195,45.0,Titanic,Cameron,C
+4,136,32.0,Parasite,Bong,D
+5,152,38.5,Gladiator,Scott,E
+6,148,36.0,Interstellar,Nolan,F
+7,124,30.0,Joker,Phillips,G
+8,201,42.0,Avatar,Cameron,H
+9,130,33.5,Whiplash,Chazelle,I
+10,154,39.0,Dune,Villeneuve,J

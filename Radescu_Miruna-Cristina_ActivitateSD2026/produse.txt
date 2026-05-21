@@ -1,0 +1,10 @@
+5,12.50,Paine,A
+2,8.90,Lapte,B
+8,25.00,Cafea,C
+1,4.50,Apa,D
+3,6.75,Iaurt,B
+7,15.30,Ciocolata,E
+10,30.00,Ulei,F
+4,3.20,Sare,G
+6,9.99,Zahar,H
+9,18.40,Orez,I
